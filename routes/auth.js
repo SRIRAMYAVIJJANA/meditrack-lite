@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-  res.render('register');
+  res.render('register', { hideNavbar: true });
 });
 
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { hideNavbar: true });
 });
 
 // ─── REGISTRATION ──────────────────────────
