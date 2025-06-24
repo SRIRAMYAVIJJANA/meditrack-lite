@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= typeof title !== 'undefined' ? title : 'MediTrack' %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0d6efd">
+
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">MediTrack</a>
+      <% if (user) { %>
+        <span class="navbar-text text-white">Hi, <%= user.name %> (<%= user.role %>)</span>
+        <a class="btn btn-outline-light ms-3" href="/logout">Logout</a>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="container">
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+
+    <%- body %>
+  </div>
+
+  <footer class="text-center text-muted mt-4">
+    <small>&copy; 2025 MediTrack</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bottom Navigation -->
+<nav class="navbar fixed-bottom navbar-light bg-white border-top d-md-none">
+  <div class="container d-flex justify-content-around text-center">
+    <% if (user && user.role === 'Doctor') { %>
+      <a href="/dashboard/doctor" class="nav-link">
+        <i class="bi bi-speedometer2"></i><br>Dashboard
+      </a>
+      <a href="/schedule" class="nav-link">
+        <i class="bi bi-calendar-check"></i><br>Schedule
+      </a>
+    <% } else if (user && user.role === 'Patient') { %>
+      <a href="/dashboard/patient" class="nav-link">
+        <i class="bi bi-speedometer2"></i><br>Dashboard
+      </a>
+      <a href="/appointments/book" class="nav-link">
+        <i class="bi bi-calendar-plus"></i><br>Appointments
+      </a>
+    <% } %>
+    <a href="/profile" class="nav-link">
+      <i class="bi bi-person-circle"></i><br>Profile
+    </a>
+  </div>
+</nav>
+<script src="/main.js"></script>
+</body>
+</html>

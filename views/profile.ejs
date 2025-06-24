@@ -1,0 +1,45 @@
+<% layout('layout') %>
+
+<h2 class="mb-4">Your Profile</h2>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Role:</strong> <%= user.role %></p>
+    <!-- Add more profile details here if needed -->
+  </div>
+</div>
+
+---- patientDashboard.ejs ----
+<% layout('layout') %>
+
+<h2 class="mb-4">Welcome <%= user.name %></h2>
+
+<h4>Your Appointments</h4>
+<% if (appointments.length === 0) { %>
+  <p>No appointments booked yet.</p>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach(app => { %>
+          <tr>
+            <td><%= app.date %></td>
+            <td><%= app.time %></td>
+            <td><%= app.doctorName %></td>
+            <td><%= app.status || 'Pending' %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
