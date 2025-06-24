@@ -9,6 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "MediTrack Lite - Clinic Appointment and Prescription Tracker",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "connect-flash": "^0.1.1",
